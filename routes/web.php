@@ -1,63 +1,40 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', function () {
-    return 'Hello World';
-})->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/categories', function () {
-    return 'Hello World';
-})->name('categories.index');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
-Route::get('/categories/{category}', function () {
-    return 'Hello World';
-})->name('categories.show');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
-Route::get('/articles', function () {
-    return 'Hello World';
-})->name('articles.index');
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 
-Route::get('/articles/create', function () {
-    return 'Hello World';
-})->name('articles.create');
+Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
 
 
-Route::post('/articles', function () {
-    return 'Hello World';
-})->name('articles.store');
+Route::post('/articles',[ArticleController::class, 'store'])->name('articles.store');
 
-Route::get('/articles/{article}', function () {
-    return 'Hello World';
-})->name('articles.show');
+Route::get('/articles/{article}',[ArticleController::class, 'show'])->name('articles.show');
 
-Route::post('/articles/{article}/comments', function () {
-    return 'Hello World';
-})->name('comments.store');
+Route::get('/articles/{article}/edit',[ArticleController::class, 'edit'])->name('articles.edit');
 
-Route::get('/articles/{article}/edit', function () {
-    return 'Hello World';
-})->name('articles.edit');
+Route::patch('/articles/{article}',[ArticleController::class, 'update'])->name('articles.update');
 
-Route::patch('/articles/{article}', function () {
-    return 'Hello World';
-})->name('articles.update');
+Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
-Route::delete('/articles/{article}', function () {
-    return 'Hello World';
-})->name('articles.destroy');
+Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store');
 
+Route::get('/contact-us',[ContactController::class, 'index'] )->name('contact-us.show');
 
-Route::get('/contact-us/show', function () {
-    return 'Hello World';
-})->name('contact-us.show');
+Route::post('/contact-us',[ContactController::class, 'store'] )->name('contact-us.store');
 
-Route::post('/contact-us', function () {
-    return 'Hello World';
-})->name('contact-us.store');
-
-Route::post('/newsletter-subscribe', function () {
-    return 'Hello World';
-})->name('subscribe');
+Route::post('/newsletter-subscribe',[SubscriptionController::class, 'store'] )->name('subscribe');
 
 
