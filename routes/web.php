@@ -8,7 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])
+    ->name('home');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
@@ -36,5 +37,6 @@ Route::get('/contact-us',[ContactController::class, 'index'] )->name('contact-us
 Route::post('/contact-us',[ContactController::class, 'store'] )->name('contact-us.store');
 
 Route::post('/newsletter-subscribe',[SubscriptionController::class, 'store'] )->name('subscribe');
+
 
 
