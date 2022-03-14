@@ -8,6 +8,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return 'Hello World';
+        $name = 'Kareem';
+        return view('welcome',[
+            'name' => $name
+        ]);
     }
 }
